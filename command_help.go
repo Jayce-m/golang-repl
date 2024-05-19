@@ -2,8 +2,13 @@ package main
 
 import "fmt"
 
+// Prints info about available commands
 func commandHelp() {
 	fmt.Println("AVAILABLE COMMANDS:")
-	fmt.Println(" - help") // cycle error when I want to access description...
-	fmt.Println(" - exit")
+
+	commandsAvailable := getCommands()
+
+	for _, value := range commandsAvailable {
+		fmt.Println("\t" + value.name + " - " + value.description)
+	}
 }
