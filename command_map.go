@@ -1,33 +1,19 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"io"
 	"log"
-	"net/http"
-	"os"
+
+	"github.com/Jayce-m/pokedexcli/internal/pokeapi"
 )
 
-// take the raw json string over network and unmarshall into struct
-
 func commandMap() {
-	response, err := http.Get("http://pokeapi.co/api/v2/location-area/")
+	pokeapiClient := pokeapi.NewClient()
 
-	// Catch error
-	if err != nil {
-		fmt.Print(err.Error())
-		os.Exit(1)
-	}
-
-	responseData, err := io.ReadAll(response.Body)
+	resp, err := pokeapiClient.ListLocationAreas()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-}
-
-func prettyPrint(i any) string {
-	s, _ := json.MarshalIndent(i, "", "\t")
-	return string(s)
+	fmt.Println(resp)
 }
