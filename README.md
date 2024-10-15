@@ -1,15 +1,8 @@
 # golang-repl
-Basic repl built with golang
+Repl built with Golang version 1.22.3
 
-Requires go version 1.22.3
 ### Build and Run
-Linux
 ```bash
 go build
 ./pokedexcli
- ```
- Windows
-```
-go build
-pokedexcli.exe
 ```
